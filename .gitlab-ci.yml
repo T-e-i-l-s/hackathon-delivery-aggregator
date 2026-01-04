@@ -1,0 +1,63 @@
+image: ghcr.io/cirruslabs/android-sdk:34
+
+stages:
+  - checks
+  - build
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx2g"
+
+cache:
+  key: "$CI_PROJECT_ID"
+  paths:
+    - .gradle/
+    - ~/.gradle/
+
+# DETEKT
+detekt:
+  stage: checks
+  script:
+    - ./gradlew detekt
+  artifacts:
+    when: always
+    paths:
+      - build/reports/detekt/
+
+# TESTS
+tests:
+  stage: checks
+  script:
+    - ./gradlew test
+  artifacts:
+    when: always
+    paths:
+      - build/test-results/
+      - build/reports/tests/
+
+ui_tests:
+  stage: checks
+  tags: []
+  script:
+    - sdkmanager --install "platform-tools" "platforms;android-34" "system-images;android-34;google_apis;x86_64"
+    - echo "no" | avdmanager create avd -n ci_avd -k "system-images;android-34;google_apis;x86_64" --device "pixel"
+    - $ANDROID_HOME/emulator/emulator -avd ci_avd -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -netfast &
+    - adb wait-for-device
+    - adb shell 'while [[ $(getprop sys.boot_completed) != "1" ]]; do sleep 1; done'
+    - ./gradlew connectedDebugAndroidTest
+  artifacts:
+    when: always
+    paths:
+      - app/build/reports/androidTests/
+      - sources/feature/main/build/reports/androidTests/
+  allow_failure: true
+
+# BUILD DEBUG APK
+debug_apk:
+  stage: build
+  script:
+    - ./gradlew assembleDebug
+  artifacts:
+    when: always
+    paths:
+      - app/build/outputs/apk/debug/*.apk
+    expire_in: 2 weeks

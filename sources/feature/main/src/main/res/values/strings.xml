@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="exit_confirmation_title">Точно хотите выйти?</string>
+    <string name="exit_confirmation_text">Нужно будет заново авторизоваться в приложении</string>
+    <string name="exit_confirmation_confirm_button">Выйти</string>
+    <string name="exit_confirmation_deny_button">Отмена</string>
+    <string name="home_screen_your_location">Ваш город:</string>
+    <string name="home_screen_city_moscow_stub">Москва</string>
+    <string name="home_screen_city_search_empty_input">Начните вводить название города</string>
+    <string name="home_screen_city_search_no_suggestions">Не удалось найти подходящие варианты</string>
+    <string name="home_screen_to">в</string>
+    <string name="home_screen_initial_suggestions_title">Отправить в</string>
+    <string name="home_screen_initial_suggestions_ending">и еще более 2000 городов</string>
+    <string name="home_screen_city_placeholder">Введите город</string>
+    <string name="delivery_stated_duration">Доставим за %1$d дн.</string>
+    <string name="delivery_predicted_duration">В среднем доставляют за %1$d дн.</string>
+    <string name="delivery_estimated_price">~ %s ₽</string>
+    <string name="delivery_estimated_price_hint">Цена рассчитана ИИ</string>
+    <string name="delivery_exact_price">%1$s ₽</string>
+    <string name="delivery_order_cta">Заказать</string>
+    <string name="delivery_tariff_label">Тариф: %1$s</string>
+    <string name="delivery_initial_state">Введите город</string>
+    <string name="delivery_empty_state">Нет доступных вариантов доставки</string>
+    <string name="delivery_error_generic">Не удалось загрузить доставки</string>
+    <string name="home_screen_destination_placeholder">Куда отправить?</string>
+    <string name="home_screen_weight_limit_title">Посылка весом до</string>
+    <string name="home_screen_weight_limit_text">%s кг</string>
+    <string name="home_screen_order_button">Заказать</string>
+    <string name="home_screen_recent_search">история поиска</string>
+    <string name="home_screen_minimum_price">от %s ₽</string>
+    <string name="home_screen_tariff">Тариф \"%s\"</string>
+    <string name="home_screen_loading_error_title">Не удалось загрузить</string>
+    <string name="home_screen_loading_error_text">Проверьте подключение к сети</string>
+    <string name="home_screen_loading_error_button_text">Обновить</string>
+    <string name="home_screen_ai_generated_price_title">Перевозчик не сообщил цену доставки</string>
+    <string name="home_screen_ai_generated_price_description">Наши алгоритмы рассчитали примерную стоимость на основе заказов других клиентов, а также предложений конкурентов.</string>
+    <string name="home_screen_ai_generated_duration_title">Перевозчик назвал свой срок доставки</string>
+    <string name="home_screen_ai_generated_duration_description">Реальная длительность может отличаться. Мы предоставляем предполагаемые сроки на основе заказов других пользователей.</string>
+    <string name="max_delivery_time">Максимум дней доставки</string>
+    <string name="filter">Фильтр</string>
+    <string name="price">Цена</string>
+    <string name="apply">Применить</string>
+    <string name="clear_filters">Сбросить фильтры</string>
+    <string name="home_screen_close_order_bottom_sheet">Закрыть</string>
+    <string name="additional_services">Дополнительные услуги</string>
+    <string name="no_offers_available">Подходящих предложений не найдено</string>
+</resources>

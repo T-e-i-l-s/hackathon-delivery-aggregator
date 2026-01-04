@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_error_title">Не удалось загрузить</string>
+    <string name="default_error_description">Проверьте подключение к сети</string>
+    <string name="default_error_button_text">Обновить</string>
+</resources>

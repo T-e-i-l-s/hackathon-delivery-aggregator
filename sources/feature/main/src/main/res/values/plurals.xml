@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="delivery_stated_duration">
+        <item quantity="one">Заявлена доставка за %d день</item>
+        <item quantity="few">Заявлена доставка за %d дня</item>
+        <item quantity="many">Заявлена доставка за %d дней</item>
+        <item quantity="other">Заявлена доставка за %d дней</item>
+    </plurals>
+    <plurals name="delivery_predicted_duration">
+        <item quantity="one">Обычно доставляют за %d день</item>
+        <item quantity="few">Обычно доставляют за %d дня</item>
+        <item quantity="many">Обычно доставляют за %d дней</item>
+        <item quantity="other">Обычно доставляют за %d дней</item>
+    </plurals>
+</resources>

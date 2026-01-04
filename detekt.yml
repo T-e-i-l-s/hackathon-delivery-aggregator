@@ -1,0 +1,105 @@
+formatting:
+  active: true
+  NoUnusedImports:
+    active: true
+  NoWildcardImports:
+    active: false
+  ImportOrdering:
+    active: false
+  MaximumLineLength:
+    active: true
+    maxLineLength: 200
+    excludePackageStatements: true
+    excludeImportStatements: true
+    excludeCommentStatements: false
+
+  FinalNewline:
+    active: false
+  Indentation:
+    active: false
+  NoTrailingSpaces:
+    active: false
+  Filename:
+    active: false
+  CurlySpacing:
+    active: false
+  CommentSpacing:
+    active: false
+  ParameterListWrapping:
+    active: false
+  StringTemplate:
+    active: false
+  BlankLineBeforeReturn:
+    active: false
+  NoEmptyFirstLineInClassBody:
+    active: false
+  NoBlankLineInWhen:
+    active: false
+  SpacingAroundColon:
+    active: false
+  SpacingAroundComma:
+    active: false
+  SpacingAroundCurly:
+    active: false
+  SpacingAroundDot:
+    active: false
+  SpacingAroundKeyword:
+    active: false
+  SpacingAroundOperators:
+    active: false
+  SpacingAroundParens:
+    active: false
+  TrailingCommaOnCallSite:
+    active: false
+  TrailingCommaOnDeclarationSite:
+    active: false
+  Wrapping:
+    active: false
+  AnnotationSpacing:
+    active: false
+  ArgumentListWrapping:
+    active: false
+  ChainWrapping:
+    active: false
+  ClassName:
+    active: false
+  EnumEntryNameCase:
+    active: false
+  FunctionName:
+    active: false
+  FunctionReturnTypeSpacing:
+    active: false
+  FunctionSignature:
+    active: false
+  KDocFormat:
+    active: false
+  KDocWrapping:
+    active: false
+  ModifierOrdering:
+    active: false
+  MultilineIfElse:
+    active: false
+  NoBlankLineBeforeRbrace:
+    active: false
+  NoConsecutiveBlankLines:
+    active: false
+  NoEmptyClassBody:
+    active: false
+  NoLineBreakAfterElse:
+    active: false
+  NoLineBreakBeforeAssignment:
+    active: false
+  NoMultipleSpaces:
+    active: false
+  PropertyName:
+    active: false
+  ReturnCount:
+    active: false
+  WrappingIfElse:
+    active: false
+  UnaryOperatorSpacing:
+    active: false
+  LambdaSpacing:
+    active: false
+  FunctionBodySpacing:
+    active: false
