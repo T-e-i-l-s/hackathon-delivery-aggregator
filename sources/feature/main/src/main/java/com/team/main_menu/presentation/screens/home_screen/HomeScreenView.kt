@@ -29,6 +29,7 @@ fun HomeScreen(
     viewModel: HomeScreenViewModel = hiltViewModel(),
     orderSheetViewModel: OrderSheetViewModel = hiltViewModel(),
     onOfferClick: (String, String) -> Unit,
+    onMyOrdersClick: () -> Unit = {},
     exitAccount: () -> Unit,
 ) {
     val deliveryState by viewModel.deliveryState.collectAsStateWithLifecycle()
@@ -54,6 +55,7 @@ fun HomeScreen(
                 shrinked = shrinked,
                 viewModel = viewModel,
                 hazeState = hazeState,
+                onMyOrdersClick = onMyOrdersClick,
                 onLogOutClick = {
                     viewModel.showExitConfirmation()
                 }

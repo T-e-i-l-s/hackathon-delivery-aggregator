@@ -7,9 +7,12 @@ import com.team.main_menu.data.repositories.DeliveryRepositoryImpl
 import com.team.main_menu.data.repositories.FakeCitiesRepository
 import com.team.main_menu.data.repositories.FakeDeliveryRepository
 import com.team.main_menu.data.repositories.FakeOrderRepository
+import com.team.main_menu.data.repositories.OrderHistoryRepositoryImpl
 import com.team.main_menu.data.repositories.OrderRepositoryImpl
 import com.team.main_menu.data.repositories.WeightLimitRepositoryImpl
+import com.team.main_menu.domain.repositories.OrderHistoryRepository
 import com.team.network.MockConfig
+import com.teils.database.data.room.entities.order.OrderDao
 import com.team.main_menu.data.source.local.prefs.WeightLimitPrefs
 import com.team.main_menu.data.source.network.citiesApi.CitiesApi
 import com.team.main_menu.data.source.network.deliveryApi.DeliveryApi
@@ -109,5 +112,11 @@ object MainModule {
     @Singleton
     fun provideWeightLimitRepository(weightLimitPrefs: WeightLimitPrefs): WeightLimitRepository {
         return WeightLimitRepositoryImpl(weightLimitPrefs)
+    }
+
+    @Provides
+    @Singleton
+    fun provideOrderHistoryRepository(orderDao: OrderDao): OrderHistoryRepository {
+        return OrderHistoryRepositoryImpl(orderDao)
     }
 }

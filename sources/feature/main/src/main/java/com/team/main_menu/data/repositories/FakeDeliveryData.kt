@@ -4,6 +4,7 @@ import com.team.main_menu.utils.delivery.DeliveryBadge
 import com.team.main_menu.utils.delivery.DeliveryCompany
 import com.team.main_menu.utils.delivery.DeliveryOffer
 import com.team.main_menu.utils.order.AdditionalService
+import com.teils.database.data.room.entities.order.OrderEntity
 import java.math.BigDecimal
 
 object FakeDeliveryData {
@@ -84,6 +85,42 @@ object FakeDeliveryData {
     private val offerMap = offers.associateBy { it.id }
 
     fun getOfferById(id: String): DeliveryOffer? = offerMap[id]
+
+    val fakeOrders = listOf(
+        OrderEntity(
+            trackingId = "DELIVERY-48291",
+            companyName = "СДЭК",
+            companyLogoId = "",
+            tariff = "Экспресс",
+            price = "2240.00",
+            destinationCity = "Санкт-Петербург",
+            statedDuration = 2,
+            predictedDuration = 3,
+            createdAt = System.currentTimeMillis() - 2 * 24 * 60 * 60 * 1000
+        ),
+        OrderEntity(
+            trackingId = "DELIVERY-73156",
+            companyName = "Деловые Линии",
+            companyLogoId = "",
+            tariff = "Сборный груз",
+            price = "1100.00",
+            destinationCity = "Казань",
+            statedDuration = 7,
+            predictedDuration = 8,
+            createdAt = System.currentTimeMillis() - 5 * 24 * 60 * 60 * 1000
+        ),
+        OrderEntity(
+            trackingId = "DELIVERY-19874",
+            companyName = "Boxberry",
+            companyLogoId = "",
+            tariff = "Сборный груз",
+            price = "1450.00",
+            destinationCity = "Новосибирск",
+            statedDuration = 5,
+            predictedDuration = 5,
+            createdAt = System.currentTimeMillis() - 12 * 24 * 60 * 60 * 1000
+        ),
+    )
 
     val services = listOf(
         AdditionalService(

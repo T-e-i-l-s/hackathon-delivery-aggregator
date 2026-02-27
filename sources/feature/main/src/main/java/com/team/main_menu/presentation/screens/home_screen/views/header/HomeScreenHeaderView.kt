@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -63,6 +64,7 @@ fun HomeScreenHeaderView(
     shrinked: Boolean,
     viewModel: HomeScreenViewModel,
     hazeState: HazeState,
+    onMyOrdersClick: () -> Unit = {},
     onLogOutClick: () -> Unit
 ) {
     val weightSelectorHazeState = rememberHazeState()
@@ -141,16 +143,26 @@ fun HomeScreenHeaderView(
                 )
             }
 
-            IconButton(
-                onClick = { viewModel.showExitConfirmation() },
-                modifier = Modifier.align(Alignment.CenterEnd)
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.exit),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onBackground,
-                    modifier = Modifier.size(24.dp * shrinkProgress)
-                )
+            Row(modifier = Modifier.align(Alignment.CenterEnd)) {
+                IconButton(onClick = onMyOrdersClick) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_orders),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(24.dp * shrinkProgress)
+                    )
+                }
+
+                IconButton(
+                    onClick = { viewModel.showExitConfirmation() },
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.exit),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(24.dp * shrinkProgress)
+                    )
+                }
             }
         }
 

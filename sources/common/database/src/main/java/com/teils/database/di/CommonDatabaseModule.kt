@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.teils.database.Constants.APP_DATABASE_NAME
 import com.teils.database.data.room.AppDatabase
 import com.teils.database.data.room.entities.citysearchhistory.CitySearchHistoryDao
+import com.teils.database.data.room.entities.order.OrderDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,11 +23,16 @@ object CommonDatabaseModule {
             context,
             AppDatabase::class.java,
             APP_DATABASE_NAME
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides
     fun provideCitySearchHistoryDao(db: AppDatabase): CitySearchHistoryDao {
         return db.citySearchHistoryDao()
+    }
+
+    @Provides
+    fun provideOrderDao(db: AppDatabase): OrderDao {
+        return db.orderDao()
     }
 }
