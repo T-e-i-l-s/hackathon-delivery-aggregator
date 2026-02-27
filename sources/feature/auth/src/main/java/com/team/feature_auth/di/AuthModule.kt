@@ -4,8 +4,10 @@ import android.content.Context
 import com.team.auth.AuthPreferences
 import com.team.feature_auth.data.remote.api.AuthApi
 import com.team.feature_auth.data.repository.AuthRepositoryImpl
+import com.team.feature_auth.data.repository.FakeAuthRepository
 import com.team.feature_auth.domain.repository.AuthRepository
 import com.team.network.ApiConstants
+import com.team.network.MockConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,7 +54,11 @@ object AuthModule {
         authPreferences: AuthPreferences,
         @ApplicationContext context: Context
     ): AuthRepository {
-        return AuthRepositoryImpl(api, authPreferences, context = context)
+        return if (MockConfig.USE_MOCK_DATA) {
+            FakeAuthRepository(authPreferences)
+        } else {
+            AuthRepositoryImpl(api, authPreferences, context = context)
+        }
     }
 }
 

@@ -13,6 +13,8 @@ import com.team.feature_auth.presentation.screens.RegisterScreen
 import com.team.feature_auth.presentation.state.AuthState
 import com.team.feature_auth.presentation.viewModels.AuthViewModel
 import com.team.main_menu.presentation.screens.home_screen.HomeScreen
+import com.team.main_menu.presentation.screens.about.AboutScreen
+import com.team.main_menu.presentation.screens.my_orders.MyOrdersScreen
 import com.team.main_menu.presentation.screens.offer_details.OfferDetailsScreen
 import kotlinx.serialization.Serializable
 
@@ -26,6 +28,12 @@ sealed class RootNavDestinations {
 
     @Serializable
     object HomeScreen : RootNavDestinations()
+
+    @Serializable
+    object MyOrdersScreen : RootNavDestinations()
+
+    @Serializable
+    object AboutScreen : RootNavDestinations()
 
     @Serializable
     class OfferDetailsScreen(
@@ -104,9 +112,37 @@ fun RootNavHost(
                         )
                     )
                 },
+                onMyOrdersClick = {
+                    navController.navigate(RootNavDestinations.MyOrdersScreen)
+                },
+                onAboutClick = {
+                    navController.navigate(RootNavDestinations.AboutScreen)
+                },
                 exitAccount = {
                     navController.navigate(RootNavDestinations.LoginScreen)
                 }
+            )
+        }
+
+        composable<RootNavDestinations.AboutScreen>(
+            enterTransition = { NavAnimations.SlideInRight(this) },
+            exitTransition = { null },
+            popEnterTransition = { null },
+            popExitTransition = { NavAnimations.SlideOutRight(this) }
+        ) {
+            AboutScreen(
+                onBack = { navController.popBackStack() }
+            )
+        }
+
+        composable<RootNavDestinations.MyOrdersScreen>(
+            enterTransition = { NavAnimations.SlideInRight(this) },
+            exitTransition = { null },
+            popEnterTransition = { null },
+            popExitTransition = { NavAnimations.SlideOutRight(this) }
+        ) {
+            MyOrdersScreen(
+                onBack = { navController.popBackStack() }
             )
         }
 

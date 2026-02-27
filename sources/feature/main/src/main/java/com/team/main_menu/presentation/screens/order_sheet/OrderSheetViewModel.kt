@@ -3,8 +3,10 @@ package com.team.main_menu.presentation.screens.order_sheet
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.team.main_menu.domain.repositories.OrderHistoryRepository
 import com.team.main_menu.domain.repositories.OrderRepository
 import com.team.main_menu.presentation.screens.order_sheet.state.OrderSheetUiState
+import com.teils.database.data.room.entities.order.OrderEntity
 import com.team.main_menu.presentation.screens.order_sheet.state.ServiceUi
 import com.team.main_menu.utils.order.OrderDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OrderSheetViewModel @Inject constructor(
-    private val orderRepository: OrderRepository
+    private val orderRepository: OrderRepository,
+    private val orderHistoryRepository: OrderHistoryRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(OrderSheetUiState())
     val state: StateFlow<OrderSheetUiState> = _state
@@ -67,6 +70,22 @@ class OrderSheetViewModel @Inject constructor(
             current.copy(
                 isPaid = true,
                 trackingId = tracking
+            )
+        }
+        val current = _state.value
+        val offer = current.offer ?: return
+        viewModelScope.launch(Dispatchers.IO) {
+            orderHistoryRepository.saveOrder(
+                OrderEntity(
+                    trackingId = tracking,
+                    companyName = offer.company.name,
+                    companyLogoId = offer.company.logoId,
+                    tariff = offer.tariff,
+                    price = current.totalPrice?.toPlainString() ?: offer.minPrice.toPlainString(),
+                    destinationCity = current.destinationCity,
+                    statedDuration = offer.statedDuration,
+                    predictedDuration = offer.predictedDuration
+                )
             )
         }
     }
