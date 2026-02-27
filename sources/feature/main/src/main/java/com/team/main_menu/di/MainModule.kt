@@ -4,8 +4,12 @@ import android.content.SharedPreferences
 import com.team.auth.AuthPreferences
 import com.team.main_menu.data.repositories.CitiesRepositoryImpl
 import com.team.main_menu.data.repositories.DeliveryRepositoryImpl
+import com.team.main_menu.data.repositories.FakeCitiesRepository
+import com.team.main_menu.data.repositories.FakeDeliveryRepository
+import com.team.main_menu.data.repositories.FakeOrderRepository
 import com.team.main_menu.data.repositories.OrderRepositoryImpl
 import com.team.main_menu.data.repositories.WeightLimitRepositoryImpl
+import com.team.network.MockConfig
 import com.team.main_menu.data.source.local.prefs.WeightLimitPrefs
 import com.team.main_menu.data.source.network.citiesApi.CitiesApi
 import com.team.main_menu.data.source.network.deliveryApi.DeliveryApi
@@ -68,7 +72,11 @@ object MainModule {
         citiesApi: CitiesApi,
         citySearchHistoryDao: CitySearchHistoryDao
     ): CitiesRepository {
-        return CitiesRepositoryImpl(citiesApi, citySearchHistoryDao)
+        return if (MockConfig.USE_MOCK_DATA) {
+            FakeCitiesRepository(citySearchHistoryDao)
+        } else {
+            CitiesRepositoryImpl(citiesApi, citySearchHistoryDao)
+        }
     }
 
     @Provides
@@ -77,7 +85,11 @@ object MainModule {
         deliveryApi: DeliveryApi,
         authPreferences: AuthPreferences
     ): DeliveryRepository {
-        return DeliveryRepositoryImpl(authPreferences, deliveryApi)
+        return if (MockConfig.USE_MOCK_DATA) {
+            FakeDeliveryRepository()
+        } else {
+            DeliveryRepositoryImpl(authPreferences, deliveryApi)
+        }
     }
 
     @Provides
@@ -86,7 +98,11 @@ object MainModule {
         orderApi: OrderApi,
         authPreferences: AuthPreferences
     ): OrderRepository {
-        return OrderRepositoryImpl(authPreferences, orderApi)
+        return if (MockConfig.USE_MOCK_DATA) {
+            FakeOrderRepository()
+        } else {
+            OrderRepositoryImpl(authPreferences, orderApi)
+        }
     }
 
     @Provides
