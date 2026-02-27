@@ -65,6 +65,7 @@ fun HomeScreenHeaderView(
     viewModel: HomeScreenViewModel,
     hazeState: HazeState,
     onMyOrdersClick: () -> Unit = {},
+    onAboutClick: () -> Unit = {},
     onLogOutClick: () -> Unit
 ) {
     val weightSelectorHazeState = rememberHazeState()
@@ -144,6 +145,15 @@ fun HomeScreenHeaderView(
             }
 
             Row(modifier = Modifier.align(Alignment.CenterEnd)) {
+                IconButton(onClick = onAboutClick) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_info),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(24.dp * shrinkProgress)
+                    )
+                }
+
                 IconButton(onClick = onMyOrdersClick) {
                     Icon(
                         painter = painterResource(R.drawable.ic_orders),
